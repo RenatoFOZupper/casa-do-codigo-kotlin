@@ -5,11 +5,11 @@ micronaut:
 
 datasources:
   default:
-    url: jdbc:postgresql://localhost:5432/cdc
+    url: ${DB_URL:`jdbc:postgresql://localhost:5432/cdc`}
     driverClassName: org.postgresql.Driver
-    username: postgres
-    password: postgres
-    dialect: POSTGRES
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    dialect: org.hibernate.dialect.PostgreSQLDialect
 
 
 
