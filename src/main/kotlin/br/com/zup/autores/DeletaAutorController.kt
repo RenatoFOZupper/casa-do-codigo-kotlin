@@ -5,10 +5,11 @@ import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Delete
 import io.micronaut.http.annotation.PathVariable
 import java.util.*
+import javax.inject.Inject
 import javax.transaction.Transactional
 
 @Controller(value = "/autores/{id}")
-class DeletaAutorController(val autorRepository: AutorRepository) {
+class DeletaAutorController(@Inject val autorRepository: AutorRepository) {
 
     @Delete
     @Transactional
