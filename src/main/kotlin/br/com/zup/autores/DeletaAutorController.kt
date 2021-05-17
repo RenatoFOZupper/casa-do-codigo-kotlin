@@ -2,29 +2,23 @@ package br.com.zup.autores
 
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
+import io.micronaut.http.annotation.Delete
 import io.micronaut.http.annotation.PathVariable
-import io.micronaut.http.annotation.Put
 import java.util.*
 import javax.transaction.Transactional
 
 @Controller(value = "/autores/{id}")
-class AtualizaAutorController(val autorRepository: AutorRepository) {
+class DeletaAutorController(val autorRepository: AutorRepository) {
 
-    @Put
+    @Delete
     @Transactional
-    fun atualiza(@PathVariable id: Long, descricao: String): HttpResponse<Any> {
-
+    fun deleta(@PathVariable id: Long) : HttpResponse<Any> {
         val possivelAutor: Optional<Autor> = autorRepository.findById(id)
-
         if (possivelAutor.isEmpty) { return HttpResponse.notFound() }
 
-        val autor = possivelAutor.get()
+        val autor: Autor = possivelAutor.get()
+        autorRepository.delete(autor)
 
-        autor.descricao = descricao
-        autorRepository.update(autor)
-
-        return HttpResponse.created(DetalhesDoAutorResponse(autor))
-
+        return HttpResponse.ok()
     }
-
 }
