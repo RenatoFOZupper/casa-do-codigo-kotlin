@@ -53,7 +53,7 @@ dependencies {
     runtime("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
     implementation("org.postgresql:postgresql:42.2.18")
-
+    implementation("io.micronaut.xml:micronaut-jackson-xml")
 }
 
 
