@@ -9,7 +9,7 @@ import javax.transaction.Transactional
 
 
 @Controller(value = "/autores")
-class BucaAutoresController(val autorRepository: AutorRepository) {
+class BuscaAutoresController(val autorRepository: AutorRepository) {
 
     @Get
     @Transactional
@@ -19,7 +19,6 @@ class BucaAutoresController(val autorRepository: AutorRepository) {
             val autores: List<Autor> = autorRepository.findAll()
 
             val resposta: List<DetalhesDoAutorResponse> = autores.map { autor -> DetalhesDoAutorResponse(autor) }
-            println("email em branco")
 
             return HttpResponse.ok(resposta)
         }
