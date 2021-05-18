@@ -4,6 +4,9 @@ datasources:
     url: jdbc:h2:mem:testdb;MODE=postgreSQL;DATABASE_TO_LOWER=TRUE
     driverClassName: org.h2.Driver
 
+##
+# Habilita log do contexto transacional
+##
 
 logger:
   levels:
